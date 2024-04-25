@@ -1,0 +1,46 @@
+#!/bin/sh
+
+echo "OdinRaven system enumeration check........."
+echo "Regards, L0hKey"
+echo " "
+sleep 5
+echo "##############################################################################"
+echo " "
+echo "############################# kernel ########################################"
+uname -a 
+echo " "
+echo "############################ version ########################################"
+cat /etc/*-release
+echo " "
+echo "######################## notable files #####################################"
+find / -perm -u=s -type f 2>/dev/null
+sleep 10
+echo " "
+echo "###################### Processes ##########################################"
+ps aux
+echo " "
+echo "###################### Active connections #################################"
+netstat -atpnu
+echo " "
+sleep 6
+echo "###################### /etc/passwd #########################################"
+cat /etc/passwd
+echo " "
+echo "################# Users in sudo group ######################################"
+getent group sudo
+echo " "
+echo "################# Users listed in home directory ###########################"
+ls /home
+echo " "
+#echo "##################### Files in home directory ############################"
+#ls -lR /home/*
+echo " "
+echo "##################### Database configuration files #######################"
+find / -name my.cnf 2>/dev/null
+sleep 7
+echo " "
+echo "#################### Possible password related files ######################"
+ls -lR /* 2>/dev/null | grep password
+echo " "
+echo "Scan finished!" 
+
